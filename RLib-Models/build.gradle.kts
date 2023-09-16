@@ -14,6 +14,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    testImplementation("mysql:mysql-connector-java:8.0.33")
 }
 
 tasks.getByName<Test>("test") {

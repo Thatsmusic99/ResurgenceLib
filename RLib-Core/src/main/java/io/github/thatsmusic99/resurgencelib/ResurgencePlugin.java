@@ -3,6 +3,7 @@ package io.github.thatsmusic99.resurgencelib;
 import io.github.thatsmusic99.resurgencelib.game.Game;
 import io.github.thatsmusic99.resurgencelib.game.GameSettings;
 import io.github.thatsmusic99.resurgencelib.listeners.PlayerJoinListener;
+import io.github.thatsmusic99.resurgencelib.map.Map;
 import io.github.thatsmusic99.resurgencelib.player.IGamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
@@ -10,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 /**
  * Represents a plugin using ResurgenceLib.
  */
-public interface ResurgencePlugin<P extends IGamePlayer<?>, G extends Game> {
+public interface ResurgencePlugin<P extends IGamePlayer<?>, M extends Map<P>, G extends Game<P, M>> {
 
     /**
      * @return The plugin running ResurgenceLib.
@@ -22,12 +23,12 @@ public interface ResurgencePlugin<P extends IGamePlayer<?>, G extends Game> {
      *
      * @return
      */
-    GameSettings<G> getSettings();
+    GameSettings<P, M, G> getSettings();
 
     /**
      * Used to initialise base listeners that ResurgenceLib uses.
      */
     default void initBaseListeners() {
-        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), getPlugin());
+        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(this), getPlugin());
     }
 }

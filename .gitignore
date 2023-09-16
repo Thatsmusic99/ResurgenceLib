@@ -1,4 +1,4 @@
 # Project exclude paths
 /.gradle/
-/RLib-Core/build/
-/RLib-Core/build/classes/java/main/
+build
+/.idea

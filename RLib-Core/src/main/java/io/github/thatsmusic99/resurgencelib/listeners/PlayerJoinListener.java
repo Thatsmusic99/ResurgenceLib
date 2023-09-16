@@ -8,9 +8,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class PlayerJoinListener implements Listener {
 
-    private final @NotNull ResurgencePlugin<?, ?> plugin;
+    private final @NotNull ResurgencePlugin<?, ?, ?> plugin;
 
-    public PlayerJoinListener(@NotNull ResurgencePlugin<?, ?> plugin) {
+    public PlayerJoinListener(@NotNull ResurgencePlugin<?, ?, ?> plugin) {
         this.plugin = plugin;
     }
 

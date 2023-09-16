@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <P>
  * @param <G>
  */
-public interface FullGameHandler<P extends IGamePlayer, G extends Game<P, ?>> {
+public interface FullGameHandler<P extends IGamePlayer<?>, G extends Game<P, ?>> {
 
     void onGameJoinAttempt(@NotNull P player, @NotNull G game);
 }

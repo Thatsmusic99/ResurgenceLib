@@ -3,6 +3,7 @@ package io.github.thatsmusic99.resurgencelib.player;
 import io.github.thatsmusic99.resurgencelib.fields.ModelField;
 import io.github.thatsmusic99.resurgencelib.game.Game;
 import io.github.thatsmusic99.resurgencelib.models.Model;
+import io.github.thatsmusic99.resurgencelib.models.ModelManager;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -12,14 +13,15 @@ import java.util.UUID;
 
 public abstract class GamePlayer extends Model implements IGamePlayer<PlayerState>, IPointGaining {
 
-    @ModelField(primary = true) private final UUID uuid;
+    @ModelField(primary = true, indexed = true) private final UUID uuid;
     @ModelField private int points;
     @NotNull private WeakReference<Player> player;
     @NotNull private PlayerState state;
     @Nullable private Game<?, ?> game;
     private int roundPoints;
 
-    public GamePlayer(Player player) {
+    public GamePlayer(@NotNull ModelManager modelManager, @NotNull Player player) {
+        super(modelManager);
         this.player = new WeakReference<>(player);
         this.uuid = player.getUniqueId();
 
@@ -28,7 +30,8 @@ public abstract class GamePlayer extends Model implements IGamePlayer<PlayerStat
         this.state = PlayerState.NOT_IN_GAME;
     }
 
-    public GamePlayer(UUID uuid, int points) {
+    public GamePlayer(@NotNull ModelManager modelManager, @NotNull UUID uuid, int points) {
+        super(modelManager);
         this.uuid = uuid;
         this.points = points;
         this.player = new WeakReference<>(null);

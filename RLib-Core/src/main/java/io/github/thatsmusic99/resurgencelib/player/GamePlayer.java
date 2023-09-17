@@ -109,6 +109,16 @@ public abstract class GamePlayer extends Model implements IGamePlayer<PlayerStat
     }
 
     @Override
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    @Override
+    public void setRoundPoints(int roundPoints) {
+        this.roundPoints = roundPoints;
+    }
+
+    @Override
     public @NotNull PlayerState getState() {
         return state;
     }

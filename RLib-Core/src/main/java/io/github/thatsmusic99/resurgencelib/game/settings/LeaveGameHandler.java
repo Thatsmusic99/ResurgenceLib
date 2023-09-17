@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <P> the player class
  * @param <G> the game class
  */
-public interface LeaveGameHandler<P extends IGamePlayer, G extends Game<P, ?>> {
+public interface LeaveGameHandler<P extends IGamePlayer<?>, G extends Game<P, ?>> {
 
     void onPlayerLeave(@NotNull P player, @NotNull G game);
 }

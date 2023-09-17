@@ -13,9 +13,8 @@ import java.util.concurrent.CompletableFuture;
 public class GameCycleManager<P extends IGamePlayer<?>, M extends Map<P>, G extends Game<P, M>> {
 
     private final @NotNull ResurgencePlugin<P, M, G> plugin;
-    private @Nullable M map;
-
-    private @Nullable G game;
+    protected @Nullable M map;
+    protected @Nullable G game;
 
     public GameCycleManager(@NotNull ResurgencePlugin<P, M, G> plugin) {
         this.plugin = plugin;
@@ -26,6 +25,8 @@ public class GameCycleManager<P extends IGamePlayer<?>, M extends Map<P>, G exte
     @Contract(pure = true)
     public @NotNull CompletableFuture<M> getNextMap() {
         if (this.map != null) return CompletableFuture.completedFuture(this.map);
+
+        return null;
     }
 
     @Contract(pure = true)

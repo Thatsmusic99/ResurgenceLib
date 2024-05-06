@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.thatsmusic99"
-version = "1.0.1-SNAPSHOT"
+version = "1.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -16,7 +16,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 
     implementation(project(":RLib-Models"))
-    compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
 }
 
 tasks.getByName<Test>("test") {

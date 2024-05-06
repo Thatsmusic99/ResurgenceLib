@@ -26,4 +26,15 @@ publishing {
     publications.create<MavenPublication>("maven") {
         from(components["java"])
     }
+
+    repositories {
+        maven {
+            name = "bs-repo"
+            url = uri("https://repo.bsdevelopment.org/releases")
+            credentials {
+                username = System.getenv("REPO_NAME")
+                password = System.getenv("REPO_PASS")
+            }
+        }
+    }
 }

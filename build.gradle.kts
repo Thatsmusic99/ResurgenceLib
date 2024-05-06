@@ -22,6 +22,18 @@ tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
 
+tasks {
+    publish {
+        dependsOn(project("RLib-AddonCore").tasks.publish)
+        dependsOn(project("RLib-Cloud").tasks.publish)
+        dependsOn(project("RLib-Core").tasks.publish)
+        dependsOn(project("RLib-GUI").tasks.publish)
+        dependsOn(project("RLib-Locale").tasks.publish)
+        dependsOn(project("RLib-Models").tasks.publish)
+        dependsOn(project("RLib-Spectating").tasks.publish)
+    }
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {

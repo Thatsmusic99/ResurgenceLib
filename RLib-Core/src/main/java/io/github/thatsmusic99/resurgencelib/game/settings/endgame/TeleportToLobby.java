@@ -27,6 +27,7 @@ public class TeleportToLobby<G extends Game<?, ?>> implements EndGameHandler<G> 
         World world = Bukkit.getWorlds().get(0);
 
         // Grab everyone and yeet them
-        Bukkit.getOnlinePlayers().forEach(player -> player.teleport(this.lobbyLocation == null ? world.getSpawnLocation() : this.lobbyLocation));
+        game.getPlayers().forEach(player -> player.getPlayer().teleport(
+                this.lobbyLocation == null ? world.getSpawnLocation() : this.lobbyLocation));
     }
 }
